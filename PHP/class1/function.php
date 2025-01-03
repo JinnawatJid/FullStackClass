@@ -9,12 +9,7 @@
 
 <body>
     <?php
-    function Myfunction()
-    {
-        print "My PHP <br>";
-    }
-    Myfunction();
-    Myfunction();
+
     $today1 = date("Y-M-d");
     $today2 = date("Y-m-D");
     $today3 = date("y-M-z");
