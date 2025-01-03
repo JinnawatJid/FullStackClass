@@ -1,0 +1,45 @@
+body {
+    text-align: center;
+    background-color: antiquewhite;
+    font-family: Roboto;
+}
+
+.banner {
+    color:brown;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.bannerImage {
+    width: 50vw;
+    height: auto;
+}
+
+.column {
+    flex: 50%;
+    padding: 0 4px;
+  }
+
+.p {
+    font-size: 20px;
+    border: 2px solid powderblue;
+    padding: 30px;
+}
+
+img {
+    width: 20vw;
+    height: auto;
+}
+
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: red;
+}

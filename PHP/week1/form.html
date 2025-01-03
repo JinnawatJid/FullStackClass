@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Form</title>
+</head>
+
+<body BGCOLOR="#FFFFFF" Text="#000000">
+    <H2>Profile</H2>
+    <form method="post" action="cgi/cgishell.exe/cdemo">
+        <pre>
+            Hidden <input type="hidden" name="hiddenText" value="This text is Hidden">
+            First Name <input type="text" name="FName" size="30" maxlength="30">
+            Last Name <input type="password" name="Pswd" size="30" maxlength="30">
+            UserName <input type="text" name="UName" size="10" maxlength="10">
+            Password <input type="password" name="Pswd" size="30" maxlength="30">
+            Address <input type="text" name="Address" size="40" maxlength="60">
+            Status <select name="Status" size="1">
+                <option selected>Single
+                <option> Marry
+                </select>
+            Sex 
+            <input type = "radio" name = "Sex" value = "M"> Male
+            <input type = "radio" name = "Sex" value = "F" Checked> Female
+            Receipt Desired <input type = "checkbox" name = "Yes">Yes
+            <input type = "checkbox" name = "No">No
+            Any Special Instructions <textarea name = "Instructions" rows = "2" cols = "60"></textarea>
+        </pre>
+        <input type="submit" value="Send Me!">
+        <input type="reset" value="Start Over!">
+    </form>
+</body>
+
+</html>

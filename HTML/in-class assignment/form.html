@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4, #fad0c4, #fcb69f);
+        }
+
+        #header {
+            background-color: #FFA500;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #header h1 {
+            font-size: 40px;
+            color: #5780d2;
+        }
+
+        #container {
+            width: 100%;
+            height: 30vh;
+            display: flex;
+            flex-direction: row;
+            margin: 20px 0;
+        }
+
+        #menu {
+            background-color: #FFD700;
+            width: 20%;
+            padding: 20px;
+        }
+
+        #menu b {
+            font-size: 20px;
+        }
+
+        #content {
+            background-color: #EEEEEE;
+            width: 80%;
+            padding: 20px;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #footer {
+            background-color: #FFA500;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #footer p {
+            font-size: 18px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1>Main Title of Web Page</h1>
+    </div>
+    <div id="container">
+        <div id="menu">
+            <b>Menu</b><br>
+            HTML<br>
+            CSS<br>
+            JavaScript
+        </div>
+        <div id="content">
+            <form>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <input type="checkbox" id="checkbox" name="checkbox" value="checkbox">Agree terms and conditions<br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; height: auto; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0px 0px 10px #888888; margin: 50px auto; width: 50%;">
+        <img src="https://images8.alphacoders.com/133/thumb-350-1332365.webp" width="100%" height="auto" style="border-radius: 10px;">
+    </div>
+    <div id="footer">
+        <p>Copyright &copy; UoSA.edu.pk</p>
+    </div>
+</body>
+
+</html>
+

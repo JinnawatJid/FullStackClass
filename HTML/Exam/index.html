@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>ข้าวหลามเลิฟเว่อ</title>
+</head>
+
+<body>
+
+    <h1 class="banner">ข้าวหลามเลิฟเว่อ</h1>
+    <button onclick="yellow()">
+        lightMode
+    </button>
+
+    <button onclick="green()">
+        darkMode
+    </button>
+    <div>
+        <p>นี่คือพื้นที่ที่คุณจะสามารถหาข้าวหลานที่อร่อยที่สุดในโลกได้!</p>
+        <img class="bannerImage" src="https://img.wongnai.com/p/1920x0/2016/08/30/7f67d60eb3c9428e8e2bafe189b5fcb5.jpg">
+        <br>
+        <strong><a href="https://www.wongnai.com/news/maekai-kongsak-bangsaen">ซื้อเลย!</a></strong>
+    </div>
+
+    <div class="catalog">
+        <p>ข้าวหลามสุดพรีเมี่ยมของเรา</p>
+
+        <div class="column">
+            <a href="_blank">
+                <img
+                    src="https://incrediblewinestore.com/wp-content/uploads/2022/03/%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B8%AB%E0%B8%A5%E0%B8%B2%E0%B8%A1%E0%B8%AB%E0%B8%99%E0%B8%AD%E0%B8%87%E0%B8%A1%E0%B8%99.jpg">
+            </a>
+            <a href="_blank">
+                <img src="https://img.wongnai.com/p/1920x0/2018/04/02/4f1454dd28654b0f918ff3ce4232a464.jpg">
+            </a>
+            <a href="_blank">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_uCK7E_A575uOIBnx-vJ1zWlJneQaP0tZPw&s">
+            </a>
+        </div>
+    </div>
+
+    <form>
+        <p style="font-size: 24px; color: brown;"><strong>ฟอร์มการสั่งซื้อ</strong></p>
+        <label for="fname">ชื่อจริง นามสกุล:</label><br>
+        <input type="text" id="fname" name="fname" required><br>
+        <label for="emailField">Enter your email:</label><br>
+        <input type="email" name="emailField" id="emailField" required />
+        <br>
+        <input type="radio" id="normal" name="normal" value="normal">
+        <label for="normal">ส่งธรรมดา</label><br>
+        <input type="radio" id="express" name="express" value="express">
+        <label for="express">ส่งด่วน</label><br>
+        <input type="radio" id="heli" name="heli" value="heli">
+        <label for="heli">ส่งด้วยเฮลิคอปเตอร์</label>
+
+        <p style="font-size: 24px; color: brown;"><strong>สั่งเพิ่มเติมมั้ย?</strong></p>
+        <input type="checkbox" id="Big" name="Big" value="Big">
+        <label for="Big"> ขอข้าวหลามเบิ้มๆ</label><br>
+        <input type="checkbox" id="Gift" name="Gift" value="Gift">
+        <label for="Gift"> ใส่กล่องของขวัญ</label><br>
+        <input type="checkbox" id="vehicle3" name="Sign" value="Sign">
+        <label for="Sign"> ขอลายเซ็นจากอาจารย์</label>
+        <br>
+        <input type="submit" value="Submit" target="_blank">
+    </form>
+
+    <h2 id="GFG" style="color:darkblue;"></h2>
+
+    <!-- เปลี่ยนสีพื้นหลังครับ -->
+    <script>
+        let result = document.getElementById("GFG");
+
+        function changeColor(color) {
+            document.body.style.background = color;
+        }
+
+        function yellow() {
+            changeColor('antiquewhite');
+        }
+
+        function green() {
+            changeColor('grey');
+        }       
+    </script>
+</body>
+
+</html>
