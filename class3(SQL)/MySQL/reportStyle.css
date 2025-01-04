@@ -1,0 +1,108 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styling */
+h1, h2, h3, h4 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #3498db;
+    font-size: 2rem;
+}
+
+h3, h4 {
+    color: #16a085;
+}
+
+/* Table Styling */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #3498db;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 14px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Button Styling */
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.button.update {
+    background-color: rgb(141, 193, 210);
+    color: #fff;
+}
+
+.button.update:hover {
+    background-color: #219150;
+}
+
+.button.delete {
+    background-color: #e06052;
+    color: #fff;
+}
+
+.button.delete:hover {
+    background-color: #c0392b;
+}
+
+/* Footer Info */
+footer {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 14px;
+    color: #7f8c8d;
+}
