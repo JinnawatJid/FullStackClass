@@ -1,1 +1,20 @@
 Make A Webboard Site like Pantip.com, Which can perform select, insert, update, delete into sql database
+
+Functional Requirements:
+
+- Create Topic
+    - Topic Name
+    - Topic Description
+    - Description Length Limit: 10,000 Characters
+    - Creator and Timestamp
+- Landing Page
+    - Display Created Topics
+
+Additional Features:
+
+- Topic Search
+- Topic Categories
+- User Chat
+- Topic Tags
+- Topic Types
+    - Question, Discussion, Polls, Review, News, and Sales
