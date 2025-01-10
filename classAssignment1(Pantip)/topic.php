@@ -22,7 +22,7 @@
 </head>
 <body>
     <?php
-    $commentsDir = "../Comment/";
+    $commentsDir = "Comment/";
 
     if (isset($_GET['name'])) {
         $topicName = $_GET['name'];
