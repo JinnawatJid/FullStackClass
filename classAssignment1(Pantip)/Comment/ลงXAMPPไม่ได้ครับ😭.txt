@@ -1,0 +1,16 @@
+<p><strong>คำอธิบาย:</strong> ช่วยด้วยครับ ผมต้องลง XAMPP ยังไงครับ</p>
+<p><strong>สร้างโดย:</strong> สมหมาย</p>
+<p><strong>วันเวลา:</strong> 2025-01-10 03:49:59</p>
+<div class='comments'>
+<hr>
+<p><strong>ความคิดเห็น:</strong> ผมลงโดยใช้ Installer ครับ</p>
+<p><strong>โดย:</strong> สมปอง</p>
+<p><strong>วันเวลา:</strong> 2025-01-10 03:50:34</p>
+</div>
+<hr>
+<div class='comments'>
+<p><strong>ความคิดเห็น:</strong> ผมทำเหมือนพี่สมปองครับ</p>
+<p><strong>โดย:</strong> สมจิต</p>
+<p><strong>วันเวลา:</strong> 2025-01-10 03:50:47</p>
+</div>
+<hr>
