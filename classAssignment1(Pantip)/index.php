@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Topics List</title>
+    <title>Pannip Home</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
-
 
         .navbar {
             display: flex;
@@ -65,33 +64,38 @@
             border: 2px solid white;
         }
 
-        .content {
-            padding: 20px;
-        }
-
-        .content h1 {
+        /* Main content styles */
+        h1 {
             color: #743e8e;
+            text-align: center;
+            margin-top: 50px;
         }
 
-        .content .topic-link {
-            display: block;
-            padding: 10px;
-            margin: 10px 0;
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #743e8e;
             text-decoration: none;
-            color: #743e8e;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        .content .topic-link:hover {
-            background-color: #f1f1f1;
+        .button:hover {
+            background-color: #5e3073;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
+
 </head>
 
 <body>
-
     <div class="navbar">
         <div class="logo">Pannip</div>
         <div class="nav-right">
@@ -106,28 +110,13 @@
         </div>
     </div>
 
+    <!-- Main Content -->
     <div class="content">
-        <h1>Topics</h1>
+        <h1>Welcome to the Pannip!</h1>
 
-        <?php
-        $topicsFile = "webboardTopics.txt";
-
-        if (file_exists($topicsFile)) {
-            $topics = file($topicsFile, FILE_IGNORE_NEW_LINES);
-            foreach ($topics as $index => $topic) {
-                $topicLink = "topic.php?name=" . urlencode($topic);
-                echo "<a class='topic-link' href='$topicLink'>$topic</a>";
-            }
-        } else {
-            echo "<p>No topics found.</p>";
-        }
-        ?>
-
-        <p style="text-align: center;">
-            <a href="createTopic.php" class="link-button" style="display: inline-block; background-color: #4CAF50; color: white; padding: 14px 25px; text-align: center; text-decoration: none; border-radius: 5px;">กลับหน้า CreateTopic</a>
-        </p>
+        <a href="createTopic.php" class="button">Create a New Topic</a>
+        <a href="topicsList.php" class="button">View All Topics</a>
     </div>
-
 </body>
 
 </html>
