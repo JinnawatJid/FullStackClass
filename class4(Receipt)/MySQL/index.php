@@ -1,4 +1,5 @@
 <?php
+
 // Include the database connection
 include 'condb.php';
 
@@ -33,127 +34,21 @@ $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Customer</title>
+
     <style>
-        * {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #f4f7fc;
-            color: #333;
-            text-align: center;
-            padding-top: 30px;
-        }
-
-        h1 {
-            font-size: 36px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;  /* Align customer boxes vertically */
-            align-items: center;     /* Center the boxes horizontally */
-            gap: 20px;
-            padding: 10px;
-        }
-
-        .customer-box {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 280px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .customer-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .customer-box img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
-
-        .customer-box h3 {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-
-        .customer-box p {
-            font-size: 14px;
-            color: #555;
-        }
-
-        .customer-box input[type="checkbox"] {
-            margin-top: 10px;
-        }
-
-        .button-container {
-            margin-top: 30px;
-        }
-
-        .button-container button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 16px;
-        }
-
-        .button-container button:hover {
-            background-color: #3e8e41;
-        }
-
-        .page-selector {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .page-selector a {
-            color: #007bff;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .page-selector a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .page-selector a.active {
-            background-color: #007bff;
-            color: white;
-        }
-
+        <?php include 'style/index.css'; ?>
     </style>
+
 </head>
 
 <body>
     <h1>Select a Customer</h1>
-    <form method="POST" action="select_customer.php">
+    <form method="GET" action="forSale.php">
         <div class="container">
             <?php
             // Step 2: Check if there are any customers
@@ -172,8 +67,11 @@ $result = $conn->query($sql);
                         <p><?php echo $customerName; ?>, Tel: <?php echo $customerTel; ?></p>
                         <!-- Checkbox -->
                         <label>
-                            <input type="checkbox" name="selected_customers[]" value="<?php echo $customerID; ?>"> Select this Customer
+                            <input type="checkbox" name="selected_customers[]" value="<?php echo $customerID; ?>"
+                                data-name="<?php echo urlencode($customerName); ?>"
+                                onclick="updateSelectedCustomers(this, '<?php echo $customerID; ?>', '<?php echo $customerName; ?>')"> Select this Customer
                         </label>
+                        <!-- Hidden input for customer name, initially not included -->
                     </div>
             <?php
                 }
@@ -183,7 +81,7 @@ $result = $conn->query($sql);
             ?>
         </div>
         <div class="button-container">
-            <button type="submit" formaction="forSale.php">Proceed to Order</button>
+            <button type="submit">Proceed to Order</button>
         </div>
         <div class="page-selector">
             <?php
@@ -205,7 +103,35 @@ $result = $conn->query($sql);
             ?>
         </div>
     </form>
+
+    <script>
+        // Store the selected customer names
+        let selectedCustomers = {};
+
+        // Function to dynamically add customer names to the form
+        function updateSelectedCustomers(checkbox, customerID, customerName) {
+            let form = document.querySelector('form');
+
+            if (checkbox.checked) {
+                // Create a new hidden input for the customer name
+                let hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = `customer_names[${customerID}]`;
+                hiddenInput.value = customerName;
+                form.appendChild(hiddenInput); // Append to form
+            } else {
+                // Remove the hidden input if checkbox is unchecked
+                let hiddenInput = form.querySelector(`input[name="customer_names[${customerID}]"]`);
+                if (hiddenInput) {
+                    form.removeChild(hiddenInput);
+                }
+            }
+        }
+    </script>
+
+
 </body>
+
 </html>
 
 <?php

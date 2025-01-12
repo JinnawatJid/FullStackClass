@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.selected-customers {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  z-index: 1000;
+}
+
+.dropdown-button {
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: inherit; /* Inherit text color */
+  text-decoration: none; /* Remove underline */
+  background: none; /* Remove any background */
+  border: none; /* Remove any border */
+  padding: 0; /* Remove any padding */
+  font-family: inherit; /* Use the same font as the surrounding text */
+}
+
+.dropdown-button:hover {
+  color: inherit; /* No color change on hover */
+  text-decoration: none; /* Ensure no underline on hover */
+}
+
+.customer-list {
+  display: none; /* Initially hidden */
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.customer-item {
+  padding: 10px;
+  margin: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.customer-item:last-child {
+  border-bottom: none;
+}
+
+.customer-id {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.customer-name {
+  color: #555;
+}
+
+.empty-message {
+  text-align: center;
+  color: #888;
+}
