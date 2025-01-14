@@ -48,7 +48,7 @@ $result = $conn->query($sql);
 
 <body>
     <h1>Select a Customer</h1>
-    <form method="GET" action="forSale.php">
+    <form method="GET" action="catalog.php">
         <div class="container">
             <?php
             // Step 2: Check if there are any customers
