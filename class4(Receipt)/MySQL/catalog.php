@@ -55,10 +55,47 @@
                     }
                 });
             });
+
+        // JavaScript to toggle the visibility of the customer list
+        function toggleCustomerList() {
+            const customerList = document.querySelector('.customer-list');
+            if (customerList.style.display === 'none' || customerList.style.display === '') {
+                customerList.style.display = 'block';
+            } else {
+                customerList.style.display = 'none';
+            }
+        }
     </script>
 </head>
 
 <body>
+
+    <div class="selected-customers">
+        <button class="dropdown-button" onclick="toggleCustomerList()">Show/Hide Selected Customers</button>
+        <div class="customer-list">
+            <?php
+            // Check if there are selected customers passed through the URL
+            if (isset($_GET['selected_customers']) && !empty($_GET['selected_customers'])) {
+                $selectedCustomers = $_GET['selected_customers']; // Array of selected customer IDs
+                $customerNames = $_GET['customer_names']; // Array of customer names
+
+                // Loop through the selected customers and display them
+                foreach ($selectedCustomers as $customerID) {
+                    if (isset($customerNames[$customerID])) {
+                        $customerName = $customerNames[$customerID];
+                        echo '<div class="customer-item">';
+                        echo '<div class="customer-id">Customer ID: ' . htmlspecialchars($customerID) . '</div>';
+                        echo '<div class="customer-name">Name: ' . htmlspecialchars($customerName) . '</div>';
+                        echo '</div>';
+                    }
+                }
+            } else {
+                echo '<div class="empty-message">No customers selected.</div>';
+            }
+            ?>
+        </div>
+    </div>
+
     <h1>Items for Sale</h1>
     <form method="POST">
         <div class="item-container">
