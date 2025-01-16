@@ -1,6 +1,14 @@
+<?php
+include 'condb.php';
+?>
+
 <style>
     <?php include 'style/receipt.css'; ?>
 </style>
+
+<?php
+$success = $_GET['success'] ?? 'false'; // Get success parameter from the URL
+?>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -53,13 +61,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 
     echo "</table>";
-    echo "<h2>Total Cost: \${$totalCost}</h2>";
-}
 
-// Add a "Back to Catalog" button
-echo '<p style="text-align: center; margin-top: 20px;">';
-echo '<a href="catalog.php" style="display: inline-block; background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; transition: 0.3s;">';
-echo 'Back to Catalog';
-echo '</a>';
-echo '</p>';
+    // Calculate VAT and total cost with VAT
+    $vat = $totalCost * 0.07; // 7% VAT
+    $totalWithVAT = $totalCost + $vat;
+
+    // Display total cost, VAT, and total with VAT
+    echo "<h2>Total Cost: \$" . number_format($totalCost, 2) . "</h2>";
+    echo "<h2>VAT (7%): \$" . number_format($vat, 2) . "</h2>";
+    echo "<h2>Total Cost with VAT: \$" . number_format($totalWithVAT, 2) . "</h2>";
+}
 ?>
+
+<!-- Submit button -->
+<form action="submitTransaction.php" method="POST" style="text-align: center; margin-top: 20px;">
+    <input type="hidden" name="selected_customers" value="<?php echo htmlspecialchars(json_encode($selectedCustomers)); ?>">
+    <input type="hidden" name="customer_names" value="<?php echo htmlspecialchars(json_encode($customerNames)); ?>">
+    <input type="hidden" name="items" value="<?php echo htmlspecialchars(json_encode($selectedItems)); ?>">
+    <input type="hidden" name="quantities" value="<?php echo htmlspecialchars(json_encode($quantities)); ?>">
+    <input type="hidden" name="vat" value="<?php echo number_format($vat, 2); ?>">
+    <input type="hidden" name="total_with_vat" value="<?php echo number_format($totalWithVAT, 2); ?>">
+
+    <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+        Submit to Database
+    </button>
+</form>
+
+<!-- Back to Catalog button -->
+<p style="text-align: center; margin-top: 20px;">
+    <a href="catalog.php" style="display: inline-block; background-color: purple; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; transition: 0.3s;">
+        Back to Catalog
+    </a>
+</p>
+
+<!-- Modal -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Transaction Submitted Successfully!</h2>
+        <p style="text-align: center;">The transaction has been processed and stock updated.</p>
+        <p style="text-align: center; margin-top: 20px;">
+            <a href="index.php" style="display: inline-block; background-color: purple; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; transition: 0.3s;">
+                Go to index
+            </a>
+        </p>
+    </div>
+</div>
+
+<script>
+    // Show the modal if success is true
+    function showModal() {
+        document.getElementById("successModal").style.display = "block";
+    }
+
+    // Close the modal
+    function closeModal() {
+        document.getElementById("successModal").style.display = "none";
+    }
+
+    // Display the modal if the success flag is true
+    <?php if ($success === 'true') { ?>
+        showModal();
+    <?php } ?>
+</script>
