@@ -1,5 +1,6 @@
 <?php
 include 'condb.php';
+require_once 'vendor/autoload.php';
 ?>
 
 <style>
@@ -39,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         echo "</ul>";
     }
 
+    // Initialize an array to store the product names for the hidden field
+    $productNames = [];
+
     // Display the table of purchased items
     echo "<h2>Purchased Items</h2>";
     echo "<table border='1' cellpadding='10' cellspacing='0'>";
@@ -50,6 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $product = $products[$itemId];
             $subtotal = $quantity * $product['price'];
             $totalCost += $subtotal;
+
+            // Collect the product name for the hidden form field
+            $productNames[] = $product['name'];
 
             echo "<tr>";
             echo "<td>" . htmlspecialchars($product['name']) . "</td>";
@@ -75,10 +82,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 <!-- Submit button -->
 <form action="submitTransaction.php" method="POST" style="text-align: center; margin-top: 20px;">
+    <!-- Header data: Customer details -->
     <input type="hidden" name="selected_customers" value="<?php echo htmlspecialchars(json_encode($selectedCustomers)); ?>">
-    <input type="hidden" name="customer_names" value="<?php echo htmlspecialchars(json_encode($customerNames)); ?>">
+    <input type="hidden" name="customer_names" value='<?php echo json_encode($customerNames); ?>'>
+
+    <!-- Detail data: Items, quantities, product names -->
     <input type="hidden" name="items" value="<?php echo htmlspecialchars(json_encode($selectedItems)); ?>">
     <input type="hidden" name="quantities" value="<?php echo htmlspecialchars(json_encode($quantities)); ?>">
+    <input type="hidden" name="product_names" value="<?php echo htmlspecialchars(json_encode($productNames)); ?>">
+
+    <!-- Calculations for VAT and total -->
     <input type="hidden" name="vat" value="<?php echo number_format($vat, 2); ?>">
     <input type="hidden" name="total_with_vat" value="<?php echo number_format($totalWithVAT, 2); ?>">
 
@@ -86,6 +99,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         Submit to Database
     </button>
 </form>
+
+<!-- Export to PDF button -->
+<p style="text-align: center; margin-top: 20px;">
+    <a href="generate_po.php?<?php echo http_build_query([
+                                    'items' => $selectedItems,
+                                    'quantity' => $quantities,
+                                    'selected_customers' => $selectedCustomers,
+                                    'customer_names' => $customerNames
+                                ]); ?>" target="_blank"
+        style="display: inline-block; background-color: #FF5722; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; transition: 0.3s;">
+        Export PO
+    </a>
+</p>
 
 <!-- Back to Catalog button -->
 <p style="text-align: center; margin-top: 20px;">
