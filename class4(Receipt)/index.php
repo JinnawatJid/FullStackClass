@@ -1,3 +1,13 @@
+<!-- <nav class="navbar">
+    <div class="navbar-logo">
+        <a href="#"></a>
+    </div>
+
+    <div class="navbar-login">
+        <a href="login.php" class="login-button">Login</a>
+    </div>
+</nav> -->
+
 <?php
 
 // Include the database connection
@@ -47,7 +57,7 @@ $result = $conn->query($sql);
 </head>
 
 <body>
-    <h1>Select a Customer</h1>
+    <h1 style="padding-top: 20px;">Select a Customer</h1>
     <form method="GET" action="catalog.php">
         <div class="container">
             <?php
