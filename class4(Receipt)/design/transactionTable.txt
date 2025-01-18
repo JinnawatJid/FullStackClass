@@ -1,7 +1,15 @@
-CREATE TABLE transaction (
-    IDtrans INT AUTO_INCREMENT PRIMARY KEY, -- Fixed the PRIMARY KEY syntax
+-- Transaction Header Table
+CREATE TABLE transaction_header (
+    IDtrans INT AUTO_INCREMENT PRIMARY KEY, -- Transaction Header ID
     IDCust VARCHAR(50),
     CustName VARCHAR(100),
+    TransDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Transaction Detail Table
+CREATE TABLE transaction_detail (
+    IDdetail INT AUTO_INCREMENT PRIMARY KEY, -- Detail ID
+    IDtrans INT, -- Foreign Key to Transaction Header
     IDProduct VARCHAR(50),
     ProductName VARCHAR(100),
     Qty INT,
@@ -9,5 +17,5 @@ CREATE TABLE transaction (
     Subtotal DECIMAL(10, 2),
     Vat DECIMAL(10, 2),
     Total DECIMAL(10, 2),
-    TransDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    FOREIGN KEY (IDtrans) REFERENCES transaction_header(IDtrans) ON DELETE CASCADE
 );
