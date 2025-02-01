@@ -1,13 +1,3 @@
-<!-- <nav class="navbar">
-    <div class="navbar-logo">
-        <a href="#"></a>
-    </div>
-
-    <div class="navbar-login">
-        <a href="login.php" class="login-button">Login</a>
-    </div>
-</nav> -->
-
 <?php
 
 // Include the database connection
@@ -57,6 +47,13 @@ $result = $conn->query($sql);
 </head>
 
 <body>
+    <div style="text-align: right; margin-bottom: 20px;">
+        <a href="./dashboard/adminDashboard.php" style="text-decoration: none;">
+            <button style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
+                Go to Admin Dashboard
+            </button>
+        </a>
+    </div>
     <h1 style="padding-top: 20px;">Select a Customer</h1>
     <form method="GET" action="catalog.php">
         <div class="container">
