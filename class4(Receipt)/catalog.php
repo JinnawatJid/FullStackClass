@@ -11,7 +11,7 @@
     </style>
 
     <script>
-        fetch("fetchProduct.php")
+        fetch("./routes/fetchProduct.php")
             .then((response) => response.json())
             .then((data) => {
                 const container = document.querySelector(".item-container");
